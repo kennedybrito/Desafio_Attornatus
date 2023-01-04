@@ -3,6 +3,8 @@ package br.com.attornatus.projeto.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +25,7 @@ public class Endereco implements Serializable {
 	private String cidade;
 	private int numero;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Pessoa cliente;
