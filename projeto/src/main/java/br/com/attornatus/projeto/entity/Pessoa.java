@@ -1,12 +1,15 @@
 package br.com.attornatus.projeto.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +22,10 @@ public class Pessoa  implements Serializable{
 	private Long id;
 	private String nome;
 	private String nascimento;
+	
+	//dependencia com endereço 
+	@OneToMany(mappedBy = "cliente")
+	private List<Endereco> endereco = new ArrayList<>();
 	
 	public Pessoa() {
 		
@@ -70,6 +77,10 @@ public class Pessoa  implements Serializable{
 			return false;
 		Pessoa other = (Pessoa) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	public List<Endereco> getEndereco() {
+		return endereco;
 	}
 	
 	
