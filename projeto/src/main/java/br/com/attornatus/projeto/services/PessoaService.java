@@ -30,4 +30,9 @@ public class PessoaService  {
 	public Pessoa insert (Pessoa obj) {
 		return repository.save(obj);		
 	}
+	
+	// deletar pessoa
+	public void delete (Long id) {
+		repository.deleteById(id);
+	}
 }
