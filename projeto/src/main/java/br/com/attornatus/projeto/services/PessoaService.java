@@ -26,4 +26,8 @@ public class PessoaService  {
 		return objeto.get();
 	}
 	
+	// inserir pessoa
+	public Pessoa insert (Pessoa obj) {
+		return repository.save(obj);		
+	}
 }

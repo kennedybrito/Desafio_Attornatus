@@ -16,6 +16,7 @@ import jakarta.persistence.ManyToOne;
 public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private EnderecoPrincipal enderecoPrincipal;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
@@ -34,10 +35,11 @@ public class Endereco implements Serializable {
 		
 	}
 
-	public Endereco(Long id, String logradouro, String cep, String cidade, int numero, Pessoa cliente) {
+	public Endereco(Long id, String logradouro, EnderecoPrincipal enderecoPrincipa , String cep, String cidade, int numero, Pessoa cliente) {
 		super();
 		Id = id;
 		this.logradouro = logradouro;
+		this.setEnderecoPrincipal(enderecoPrincipa);
 		this.cep = cep;
 		this.cidade = cidade;
 		this.numero = numero;
@@ -107,6 +109,14 @@ public class Endereco implements Serializable {
 			return false;
 		Endereco other = (Endereco) obj;
 		return Objects.equals(Id, other.Id);
+	}
+
+	public EnderecoPrincipal getEnderecoPrincipal() {
+		return enderecoPrincipal;
+	}
+
+	public void setEnderecoPrincipal(EnderecoPrincipal enderecoPrincipal) {
+		this.enderecoPrincipal = enderecoPrincipal;
 	}
 	
 	
